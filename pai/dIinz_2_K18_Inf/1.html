@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="data.php" method="get">
+        <fieldset>
+            <legend>Dane osobowe</legend>
+            <label for="name">Imię</label>
+            <input type="text" name="name" id="name" required maxlength="10" placeholder="Wprowadź swoje imię" autofocus><br><br>
+            <label for="address">Adres</label>
+            <input type="text" name="address" id="address" required maxlength="100" placeholder="Wprowadź swoje imię"><br><br>
+            <label for="phone">Numer telefonu</label>
+            <input type="tel" name="phone" id="phone" pattern="[0-9]{9}" placeholder="Wpisz swój numer telefonu">
+        </fieldset>
+        <fieldset>
+            <legend>Zamówienie</legend>
+            <label>Rozmiar pizzy</label>
+            <input type="radio" name="size" id="small" value="small">
+            <label for="small">Mała</label>
+            <input type="radio" name="size" id="medium" value="medium" checked>
+            <label for="medium">Średnia</label>
+            <input type="radio" name="size" id="large" value="large">
+            <label for="large">Duża</label>
+            <input type="radio" name="size" id="giant" value="giant">
+            <label for="giant">Gigantyczna</label><br><br>
+            <label>Składniki</label>
+        </fieldset>
+        <button type="submit">Wyślij</button>
+    </form>
+</body>
+</html>
