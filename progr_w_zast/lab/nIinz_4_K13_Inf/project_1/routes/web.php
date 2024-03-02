@@ -29,3 +29,41 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('name', function(){
+    return "Imię";
+});
+
+Route::redirect('imie', 'name');
+
+/*Route::get('city', function(){
+    return view('city', ['firstName' => 'Janusz', 'lastName' => 'Nowak', 'city' => 'Poznań']);
+});*/
+
+Route::get('city_data', function(){
+    return "test";
+});
+
+/*Route::get('city_data/{city}', function($city){
+    return view('city', ['firstName' => 'Janusz', 'lastName' => 'Nowak', 'city' => $city]);
+});*/
+
+Route::get('city_data/{city}/{street?}', function($city, $street=null){
+    return view('city', ['firstName' => 'Janusz', 'lastName' => 'Nowak', 'city' => $city, 'street' => $street]);
+});
+
+//miasto_data => city_data
+Route::redirect('miasto_data', 'city_data');
+Route::redirect('miasto_data/{city}/{street?}', '/city_data/{city}/{street?}');
+//Route::view()
+
+Route::get('pages/{x}', function($x){
+    $pages = [
+        "contact" => "kontakt@wp.pl",
+        "home" => "Strona domowa",
+        "about" => "Strona o mnie"
+    ];
+    return $pages[$x]??"Błędne dane podane przez użytkownika";
+});
+
+
