@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./3.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formularz kontaktowy</h1>
+    <div id="errorBox"></div>
+    <form id="data" action="./sendData.php" method="post" onsubmit="return submitForm()">
+        <label for="name">Imię</label>
+        <input type="text" name="name" id="name" autofocus>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="message">Wiadomość</label>
+        <textarea name="message" id="message" cols="50" rows="4"></textarea>
+
+        <label class="beige">Płeć:</label><br>
+        <label for="male">Mężczyzna</label>
+        <input type="radio" name="gender" id="male" value="Mężczyzna">
+        <label for="female">Kobieta</label>
+        <input type="radio" name="gender" id="female" value="Kobieta">
+        <label for="other">Inna</label>
+        <input type="radio" name="gender" id="other" value="Inna">
+
+        <label class="beige">Hobby:</label><br>
+        <label for="reading">Czytanie</label>
+        <input type="checkbox" name="hobbies" id="reading" value="Czytanie">
+        <label for="sports">Sport</label>
+        <input type="checkbox" name="hobbies" id="sports" value="Sport">
+        <label for="hobbies">Muzyka</label>
+        <input type="checkbox" name="hobbies" id="music" value="Muzyka">
+
+        <label for="color">Ulubiony kolor:</label>
+        <input type="color" name="color" id="color">
+        <!-- <input type="button" value="Wyślij" onclick="showData()"> -->
+        <input type="submit" value="Wyślij">
+    </form>
+    <div id="result"></div>
+    <script>
+				function validateForm(){
+					let name = document.getElementById("name").value;
+					let email = document.getElementById("email").value;
+					let message = document.getElementById("message").value;
+					let gender = document.querySelector('input[name="gender"]:checked');
+					let hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+					let errors = [];
+
+					if (!name.match(/^[a-zA-Z]{3,}$/)) {
+						errors.push("Imię powinno zawierać tylko litery i mieć co najmniej 3 znaki");
+					}
+
+					if (!email.match(/^\S+@\S+\.\S+$/)) {
+						errors.push("Email powinien zawierać prawidłowy adres.");
+					}
+
+					if (message.length < 20) {
+						errors.push("Wiadomość powinna mieć co najmniej 20 znaków");
+					}
+
+					if (!gender) {
+						errors.push("Proszę wybrać płeć");
+					}
+
+					if (hobbies.length === 0) {
+						errors.push("Proszę wybrać przynajmniej jedno hobby");
+					}
+
+					return errors;
+				}
+
+				function displayErrors(errors){
+					let errorBox = document.getElementById("errorBox");
+					errorBox.innerHTML = "";
+					//errors.forEach(function(error){
+						errors.forEach((error) => {
+						let p = document.createElement("p");
+						p.innerText = error;
+						errorBox.appendChild(p);
+					});
+				}
+
+        function submitForm(){
+					let errors = validateForm();
+					if (errors.length > 0) {
+						displayErrors(errors);
+						return false;
+					}
+					return true;
+        }
+    </script>
+    </body>
+</html>
+    
