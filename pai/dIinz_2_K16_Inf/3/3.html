@@ -56,8 +56,8 @@
 						errors.push("Email powinien zawierać prawidłowy adres.");
 					}
 
-					if (message.length < 20) {
-						errors.push("Wiadomość powinna mieć co najmniej 20 znaków");
+					if (message.length < 10) {
+						errors.push("Wiadomość powinna mieć co najmniej 10 znaków");
 					}
 
 					if (!gender) {
@@ -83,6 +83,7 @@
 				}
 
         function submitForm(){
+          //alert("test");
 					let errors = validateForm();
 					if (errors.length > 0) {
 						displayErrors(errors);
