@@ -1,0 +1,44 @@
+body {
+	font-family: 'Courier New', Courier, monospace;
+	background-color: lightgrey;
+}
+
+h1 {
+	text-align: center;
+	color: darkblue;
+}
+
+form {
+	width: 50%;
+	margin: 0 auto;
+	border: 2px solid darkblue;
+	padding: 20px;
+	background-color: white;
+}
+
+label {
+	display: inline-block;
+	width: 20%;
+	margin: 10px 0;
+}
+
+input, textarea {
+	display: inline;
+	width: 70%;
+	margin: 10px auto;
+}
+
+.beige {
+	background-color: beige;
+}
+
+#result, #errorBox {
+	width: 50%;
+	margin: 20px auto;
+	border: 2px solid darkblue;
+	padding: 20px;
+	background-color: white;
+}
+
+
+
