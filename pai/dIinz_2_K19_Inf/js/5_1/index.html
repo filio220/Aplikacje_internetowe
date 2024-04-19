@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywna strona zdarzeń</title>
+		<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="header" id="pageHeader">Interaktywna strona zdarzeń</div>
+    <textarea id="keyLogger" cols="30" rows="10" placeholder="Tutaj wpisz tekst..."></textarea>
+
+		<span class="char-counter">0 znaków</span>
+
+		<div class="font-select">
+			<label for="fontSelect">Wybierz czcionkę:</label>
+			<select id="fontSelect" onchange="changeFont()">
+				<option value="Arial">Arial</option>
+				<option value="Times New Roman">Times New Roman</option>
+				<option value="Verdana">Verdana</option>
+				<option value="Courier New">Courier New</option>
+			</select>
+		</div>
+
+    <button onclick="changeBackground()">Zmień tło</button>
+    <button onclick="showDateTime()">Pokaż datę i czas</button>
+    <button onclick="resetChanges()">Resetuj zmiany</button>
+
+    <script>
+			document.addEventListener('DOMContentLoaded', (event) => {
+				document.body.style.transition = 'background-color 0.5s';
+
+				const keyLogger = document.getElementById('keyLogger');
+				const charCounter = document.querySelector('.char-counter');
+
+				keyLogger.addEventListener('input', (event) => {
+					const charCount = event.target.value.length;
+					charCounter.textContent = `${charCount} znaków`;
+				});
+
+				keyLogger.addEventListener('keypress', (event) => {
+					if (event.key >= '0' && event.key <= '9') {
+						event.preventDefault();
+					}
+				});
+
+				keyLogger.addEventListener('focus', (event) => {
+					event.target.style.backgroundColor = '#dfffdf';
+				});
+
+				keyLogger.addEventListener('blur', (event) => {
+					event.target.style.backgroundColor = '#fff';
+					validateInput(event.target);
+				});
+
+			});
+
+			function validateInput(inputElement){
+				//console.log(inputElement.value);
+				const regex = /^[a-zA-Z\s]+$/;
+				if (!regex.test(inputElement.value)) {
+					alert('Wprowadzono nieprawidłowe dane!');
+					inputElement.classList.add('invalid');
+				}else{
+					inputElement.classList.remove('invalid');
+				}
+			}
+
+			function showDateTime(){
+				alert(new Date().toLocaleString());
+			}
+
+			function changeBackground(){
+				console.log(Math.floor(Math.random()*16777215).toString(16));
+				document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+			}
+
+			function resetChanges(){
+				document.body.style.backgroundColor = '';
+				document.getElementById('pageHeader').style.backgroundColor = '#f2f2f2';
+				document.getElementById('keyLogger').value = '';
+				document.getElementById('keyLogger').classList.remove('invalid');
+				document.querySelector('.char-counter').textContent = '0 znaków';
+			}
+
+			function changeFont(){
+				const fontSelect = document.getElementById('fontSelect');
+				const selectedFont = fontSelect.value;
+				document.getElementById('keyLogger').style.fontFamily = selectedFont;
+			}
+    </script>
+
+		<!-- 
+1. Licznik znaków w polu tekstowym:
+Dodaj licznik, który będzie śledził, ile znaków zostało wpisanych w polu tekstowym. Wyświetl go obok pola tekstowego.
+2. Przycisk do zmiany czcionki:
+Dodaj przycisk, który po kliknięciu zmieni czcionkę tekstu w polu tekstowym. Studenci mogą wybrać spośród kilku dostępnych czcionek.
+3. Animacja przycisków:
+Po najechaniu myszką na przyciski, dodaj animację, która sprawi, że przyciski będą się lekko powiększać lub zmieniać kolor.
+		 -->
+
+</body>
+</html>
