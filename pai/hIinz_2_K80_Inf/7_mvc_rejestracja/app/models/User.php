@@ -6,7 +6,7 @@
 			try {
 				$this->db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['db_name']);
 			} catch(Exception $e) {
-				die("Błędne połączenie z baządanych: " . $e->getMessage());
+				die("Błędne połączenie z bazą danych: " . $e->getMessage());
 			}
 		}
 

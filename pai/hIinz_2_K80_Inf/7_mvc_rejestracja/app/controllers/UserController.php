@@ -23,7 +23,7 @@
 				$data['birthday'] = htmlspecialchars(trim($_POST['birthday']));
 
 				if (empty($data['username']) || !preg_match('/^[a-zA-Z0-9]{5,}$/', $data['username'])) {
-					$errors['username'] = 'Nazwa użytkownikajest nieprawidłowa';
+					$errors['username'] = 'Nazwa użytkownika jest nieprawidłowa';
 				}
 
 				if (empty($data['password']) || strlen($data['password']) < 8) {
