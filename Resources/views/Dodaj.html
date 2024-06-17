@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestr Pracowników</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Rejestr Pracowników</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Strona Główna</a></li>
+            <li><a href="Dodaj.html">Dodaj pracownika</a></li>
+            <li><a href="Usuń.html">Usuń Pracownika</a></li>
+            <li><a href="Edytuj.html">Edytuj Pracownika</a></li>
+            <li><a href="#statistic">Statystyki</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Add Employee</h2>
+        <form id="employeeForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="position" placeholder="Position" required>
+            <input type="number" id="salary" placeholder="Salary" required>
+            <button type="submit">Add Employee</button>
+        </form>
+        <script src="scripts.js"></script>
+</body>
+</html>
